@@ -1,5 +1,6 @@
 CREATE DATABASE IF NOT EXISTS biblioteca;
 USE biblioteca;
+
 CREATE TABLE IF NOT EXISTS libro (
 	id int(11) NOT NULL AUTO_INCREMENT, 
     nombre varchar(100) NOT NULL, 
@@ -32,3 +33,22 @@ SELECT * FROM biblioteca.libro WHERE nombre = "Libro3";
 SELECT * FROM biblioteca.libro WHERE autor = "autor1";
 
 SELECT * FROM biblioteca.libro WHERE genero = "x";
+
+CREATE TABLE IF NOT EXISTS Prestamo (
+	id int(11) NOT NULL AUTO_INCREMENT, 
+    id_libro int(11) NOT NULL, 
+    usuario varchar(100) NOT NULL,
+    fechaInicio varchar(100) NOT NULL,
+    fechaFin varchar(100) NOT NULL,
+    PRIMARY KEY (id),
+    FOREIGN KEY (id_libro)
+);
+
+INSERT INTO Prestamo (id, id_libro, usuario, fechaInicio, fechaFin) 
+VALUES (0, 1, "Roberto", "2019/05/15", "2019/05/30");
+
+SELECT * FROM biblioteca.Prestamo;
+
+SELECT * FROM biblioteca.Prestamo WHERE id_libro = 1;
+
+SELECT * FROM biblioteca.Prestamo WHERE usuario = "Roberto";
