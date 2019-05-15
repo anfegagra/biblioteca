@@ -7,15 +7,22 @@ import java.util.List;
 import com.eafit.biblioteca.dto.Libro;
 import com.eafit.biblioteca.dto.LibroDAO;
 import com.eafit.biblioteca.dto.LibroDAOMySQL;
+import com.eafit.biblioteca.dto.Usuario;
+import com.eafit.biblioteca.dto.UsuarioDAO;
+import com.eafit.biblioteca.dto.UsuarioDAOMySLQL;
 
 public class Main {
 
 	public static void main(String[] args) {
 
 		LibroDAO libroDao = new LibroDAOMySQL();
+		UsuarioDAO usuarioDao = new UsuarioDAOMySLQL();
 		List<Libro> libros = new ArrayList<>();
 
 		try {
+			
+			Usuario usuario = new Usuario("Andres", "1234");
+			usuarioDao.iniciarSesion(usuario);
 
 			System.out.println("-------------------agregar-------------------");
 			libroDao.agregar(new Libro("LibroX", "DescripciónX", "AutorX", "GeneroX"));

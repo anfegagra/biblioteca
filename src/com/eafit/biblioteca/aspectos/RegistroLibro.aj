@@ -11,18 +11,28 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 import com.eafit.biblioteca.dto.Libro;
+import com.eafit.biblioteca.dto.Usuario;
 
 public aspect RegistroLibro {
 
+	String correoDestino = "prueba@hotmail.com";
+
+	pointcut login(): 
+		call(* com.eafit.biblioteca.dto.UsuarioDAO.iniciarSesion(Usuario));
+
+	after() returning (Usuario u): login()  {
+		correoDestino = u.getCorreo();
+	}
+
 	pointcut registrarLibro(): 
-		call(void com.eafit.biblioteca.dto.LibroDAO.agregar(Libro)) ;
+		call(void com.eafit.biblioteca.dto.LibroDAO.agregar(Libro));
 
 	after() : registrarLibro()  {
 		System.out.println("Se agrego un libro");
 
 		final String usuario = "anfegagra.94@gmail.com";
 		final String contrasena = "prueba.7";
-		String receptor = "prueba@hotmail.com";
+		String receptor = correoDestino;
 
 		Properties properties = new Properties();
 		properties.put("mail.smtp.host", "smtp.gmail.com");
