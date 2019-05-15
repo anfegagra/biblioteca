@@ -3,6 +3,7 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.ajdt.core.ASPECTJRT_CONTAINER"/>
-	<classpathentry kind="lib" path="C:/Users/garandre/Desktop/mysql-connector-java-5.1.47.jar"/>
+	<classpathentry kind="lib" path="C:/Users/garandre/Desktop/Proyecto final/mysql-connector-java-5.1.47.jar"/>
+	<classpathentry kind="lib" path="C:/Users/garandre/Desktop/Proyecto final/javamail-1.2/mail.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

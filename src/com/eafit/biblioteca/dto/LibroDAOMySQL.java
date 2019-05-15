@@ -30,10 +30,13 @@ public class LibroDAOMySQL implements LibroDAO {
 	@Override
 	public void agregar(Libro c) throws SQLException, InstantiationException, IllegalAccessException {
 		conn = Conexion.getConexion();
-		String query = "INSERT INTO libro (nombre, descripcion) values(?, ?)";
+		String query = "INSERT INTO libro (nombre, descripcion, autor, genero, prestado) values(?, ?, ?, ?, ?)";
 		ps = conn.prepareStatement(query);
 		ps.setString(1, c.getNombre());
 		ps.setString(2, c.getDescripcion());
+		ps.setString(3, c.getAutor());
+		ps.setString(4, c.getGenero());
+		ps.setBoolean(5, c.isPrestado());
 		ps.executeUpdate();
 		conn.close();
 	}

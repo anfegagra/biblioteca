@@ -15,10 +15,10 @@ public class Main {
 		try {
 
 			System.out.println("-------------------agregar-------------------");
-			libroDao.agregar(new Libro(1, "Libro1", "..."));
+			libroDao.agregar(new Libro("LibroX", "DescripciónX", "AutorX", "GeneroX"));
 
-			System.out.println("-------------------agregar-------------------");
-			libroDao.agregar(new Libro(2, "Libro2", "..."));
+//			System.out.println("-------------------agregar-------------------");
+//			libroDao.agregar(new Libro(2, "Libro2", "..."));
 			
 		} catch (SQLException e) {
 			System.out.println("Hay problemas para acceder a la base de datos: " + e.getMessage());

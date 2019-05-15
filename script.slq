@@ -1,3 +1,26 @@
 CREATE DATABASE IF NOT EXISTS biblioteca;
 USE biblioteca;
-CREATE TABLE IF NOT EXISTS libro (id int(11) NOT NULL AUTO_INCREMENT, nombre varchar(100) NOT NULL, descripcion varchar(5000) NOT NULL, PRIMARY KEY (id));
+CREATE TABLE IF NOT EXISTS libro (
+	id int(11) NOT NULL AUTO_INCREMENT, 
+    nombre varchar(100) NOT NULL, 
+    descripcion varchar(5000) NOT NULL,
+    autor varchar(100) NOT NULL,
+    genero varchar(100) NOT NULL,
+    prestado bool NOT NULL,
+    PRIMARY KEY (id)
+);
+
+INSERT INTO libro (id, nombre, descripcion, autor, genero, prestado) 
+VALUES (0, "Libro1", "descripcion1", "autor1", "x", false);
+
+INSERT INTO libro (id, nombre, descripcion, autor, genero, prestado) 
+VALUES (0, "Libro2", "descripcion2", "autor1", "y", false);
+
+INSERT INTO libro (id, nombre, descripcion, autor, genero, prestado) 
+VALUES (0, "Libro3", "descripcion3", "autor2", "x", false);
+
+INSERT INTO libro (id, nombre, descripcion, autor, genero, prestado) 
+VALUES (0, "Libro4", "descripcion4", "autor2", "y", false);
+
+INSERT INTO libro (id, nombre, descripcion, autor, genero, prestado) 
+VALUES (0, "Libro5", "descripcion5", "autor3", "z", false);

@@ -28,6 +28,13 @@ public class Libro {
 		this.descripcion = descripcion;
 	}
 
+	public Libro(String nombre, String descripcion, String autor, String genero) {
+		this.nombre = nombre;
+		this.descripcion = descripcion;
+		this.autor = autor;
+		this.genero = genero;
+	}
+
 	public Integer getId() {
 		return id;
 	}
