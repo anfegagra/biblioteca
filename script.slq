@@ -24,3 +24,11 @@ VALUES (0, "Libro4", "descripcion4", "autor2", "y", false);
 
 INSERT INTO libro (id, nombre, descripcion, autor, genero, prestado) 
 VALUES (0, "Libro5", "descripcion5", "autor3", "z", false);
+
+SELECT * FROM biblioteca.libro;
+
+SELECT * FROM biblioteca.libro WHERE nombre = "Libro3";
+
+SELECT * FROM biblioteca.libro WHERE autor = "autor1";
+
+SELECT * FROM biblioteca.libro WHERE genero = "x";

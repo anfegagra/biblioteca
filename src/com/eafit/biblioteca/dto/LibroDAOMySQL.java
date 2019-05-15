@@ -71,7 +71,8 @@ public class LibroDAOMySQL implements LibroDAO {
 		st = conn.createStatement();
 		rs = st.executeQuery(s);
 		while (rs.next()) {
-			categorias.add(new Libro(rs.getInt("id"), rs.getString("nombre"), rs.getString("descripcion")));
+			categorias.add(new Libro(rs.getString("nombre"), rs.getString("descripcion"), rs.getString("autor"),
+					rs.getString("genero")));
 		}
 		conn.close();
 		return categorias;
@@ -94,21 +95,51 @@ public class LibroDAOMySQL implements LibroDAO {
 	}
 
 	@Override
-	public List<Libro> obtenerPorNombre() throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Libro> obtenerPorNombre(String nombre) throws Exception {
+		List<Libro> categorias = new ArrayList<>();
+		conn = Conexion.getConexion();
+		String query = "SELECT * FROM biblioteca.libro WHERE nombre = ?";
+		ps = conn.prepareStatement(query);
+		ps.setString(1, nombre);
+		rs = ps.executeQuery();
+		while (rs.next()) {
+			categorias.add(new Libro(rs.getString("nombre"), rs.getString("descripcion"), rs.getString("autor"),
+					rs.getString("genero")));
+		}
+		conn.close();
+		return categorias;
 	}
 
 	@Override
-	public List<Libro> obtenerPorAutor() throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Libro> obtenerPorAutor(String autor) throws Exception {
+		List<Libro> categorias = new ArrayList<>();
+		conn = Conexion.getConexion();
+		String query = "SELECT * FROM biblioteca.libro WHERE autor = ?";
+		ps = conn.prepareStatement(query);
+		ps.setString(1, autor);
+		rs = ps.executeQuery();
+		while (rs.next()) {
+			categorias.add(new Libro(rs.getString("nombre"), rs.getString("descripcion"), rs.getString("autor"),
+					rs.getString("genero")));
+		}
+		conn.close();
+		return categorias;
 	}
 
 	@Override
-	public List<Libro> obtenerPorGenero() throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Libro> obtenerPorGenero(String genero) throws Exception {
+		List<Libro> categorias = new ArrayList<>();
+		conn = Conexion.getConexion();
+		String query = "SELECT * FROM biblioteca.libro WHERE genero = ?";
+		ps = conn.prepareStatement(query);
+		ps.setString(1, genero);
+		rs = ps.executeQuery();
+		while (rs.next()) {
+			categorias.add(new Libro(rs.getString("nombre"), rs.getString("descripcion"), rs.getString("autor"),
+					rs.getString("genero")));
+		}
+		conn.close();
+		return categorias;
 	}
 
 }

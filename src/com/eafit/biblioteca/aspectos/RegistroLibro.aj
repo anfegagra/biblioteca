@@ -22,7 +22,7 @@ public aspect RegistroLibro {
 
 		final String usuario = "anfegagra.94@gmail.com";
 		final String contrasena = "prueba.7";
-		String receptor = "pipe-777@hotmail.com";
+		String receptor = "prueba@hotmail.com";
 
 		Properties properties = new Properties();
 		properties.put("mail.smtp.host", "smtp.gmail.com");

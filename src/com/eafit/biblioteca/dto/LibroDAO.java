@@ -17,11 +17,11 @@ public interface LibroDAO {
 
 	public List<Libro> obtenerTodos() throws Exception;
 	
-	public List<Libro> obtenerPorNombre() throws Exception;
+	public List<Libro> obtenerPorNombre(String nombre) throws Exception;
 	
-	public List<Libro> obtenerPorAutor() throws Exception;
+	public List<Libro> obtenerPorAutor(String autor) throws Exception;
 	
-	public List<Libro> obtenerPorGenero() throws Exception;
+	public List<Libro> obtenerPorGenero(String genero) throws Exception;
 
 	public Libro obtenerPorId(Integer id) throws Exception;
 }
