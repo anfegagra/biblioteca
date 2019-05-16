@@ -78,6 +78,21 @@ public class LibroDAOMySQL implements LibroDAO {
 		conn.close();
 		return libros;
 	}
+	
+	@Override
+	public List<Libro> obtenerTodosConEstado() throws SQLException, InstantiationException, IllegalAccessException {
+		List<Libro> libros = new ArrayList<>();
+		conn = Conexion.getConexion();
+		String s = "SELECT * FROM libro";
+		st = conn.createStatement();
+		rs = st.executeQuery(s);
+		while (rs.next()) {
+			libros.add(new Libro(rs.getInt("id"), rs.getString("nombre"), rs.getString("descripcion"), rs.getString("autor"),
+					rs.getString("genero"), rs.getBoolean("prestado")));
+		}
+		conn.close();
+		return libros;
+	}
 
 	@Override
 	public Libro obtenerPorId(Integer id) throws SQLException, InstantiationException, IllegalAccessException {

@@ -36,7 +36,25 @@ public class Libro {
 		this.autor = autor;
 		this.genero = genero;
 	}
+	
+	public Libro(Integer id, String nombre, String descripcion, String autor, String genero, boolean prestado) {
+		super();
+		this.id = id;
+		this.nombre = nombre;
+		this.descripcion = descripcion;
+		this.autor = autor;
+		this.genero = genero;
+		this.prestado = prestado;
+	}
 
+	public Libro(String nombre, String descripcion, String autor, String genero, boolean prestado) {
+		this.nombre = nombre;
+		this.descripcion = descripcion;
+		this.autor = autor;
+		this.genero = genero;
+		this.prestado = prestado;
+	}
+	
 	public Libro(String nombre, String descripcion, String autor, String genero) {
 		this.nombre = nombre;
 		this.descripcion = descripcion;

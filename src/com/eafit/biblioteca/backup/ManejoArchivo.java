@@ -52,22 +52,34 @@ public class ManejoArchivo {
         // Create a blank sheet 
         XSSFSheet sheet = workbook.createSheet("1"); 
         
-        String[][] arrayLibros = {{"a", "b", "c", "1"},{"d", "e", "h", "g"}};
+        String[][] arrayLibros = MapLibro(libros);
 
         int rownum = 0; 
         for (String[] libro : arrayLibros) { 
-            // this creates a new row in the sheet 
-            Row row = sheet.createRow(rownum++); 
-            int cellnum = 0; 
-            for (String campo : libro) { 
-                // this line creates a cell in the next column of that row 
-                Cell cell = row.createCell(cellnum++); 
-                
-                cell.setCellValue(campo); 
-                
-            } 
-        } 
+          // this creates a new row in the sheet 
+          Row row = sheet.createRow(rownum++); 
+          int cellnum = 0; 
+          for (String campo : libro) { 
+              // this line creates a cell in the next column of that row 
+              Cell cell = row.createCell(cellnum++); 
+              
+              cell.setCellValue(campo); 
+              
+          } 
+      } 
 
+//        for (String[] libro : arrayLibros) { 
+//            // this creates a new row in the sheet 
+//            Row row = sheet.createRow(rownum++); 
+//            int cellnum = 0; 
+//            for (String campo : libro) { 
+//                // this line creates a cell in the next column of that row 
+//                Cell cell = row.createCell(cellnum++); 
+//                
+//                cell.setCellValue(campo); 
+//                
+//            } 
+//        } 
         try { 
             // this Writes the workbook gfgcontribute 
             FileOutputStream out = new FileOutputStream(new File("backupgenerado.xlsx")); 
@@ -79,6 +91,20 @@ public class ManejoArchivo {
             e.printStackTrace(); 
         } 
         
+	}
+	
+	public String[][] MapLibro(List<Libro> libros) {
+		String[][] informacion = new String[libros.size()][6];
+		
+		for(int i = 0; i < libros.size(); i++) {
+			informacion[i][0] = Integer.toString(libros.get(i).getId());
+			informacion[i][1] = libros.get(i).getNombre();
+			informacion[i][2] = libros.get(i).getDescripcion();
+			informacion[i][3] = libros.get(i).getAutor();
+			informacion[i][4] = libros.get(i).getGenero();
+			informacion[i][5] = Boolean.toString(libros.get(i).isPrestado());
+		}
+		return informacion;
 	}
 
 }

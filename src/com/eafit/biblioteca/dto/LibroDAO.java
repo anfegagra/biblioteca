@@ -17,6 +17,8 @@ public interface LibroDAO {
 
 	public List<Libro> obtenerTodos() throws Exception;
 	
+	public List<Libro> obtenerTodosConEstado() throws Exception;
+	
 	public Libro obtenerPorNombre(String nombre) throws Exception;
 	
 	public List<Libro> obtenerPorAutor(String autor) throws Exception;

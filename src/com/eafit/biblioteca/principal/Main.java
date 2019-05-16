@@ -42,10 +42,11 @@ public class Main {
 	        String [][] valores = manejoArchivo.LeerValores(sheet);
 	        workbook.close();
 	        for(String[] registro: valores) {
-	        	libro = new Libro(registro[0], registro[1], registro[2], registro[3]);
+	        	libro = new Libro(registro[0], registro[1], registro[2], registro[3], 
+	        			Boolean.parseBoolean(registro[4]));
 	        	libroDao.agregar(libro);
 	        }
-	        
+	        manejoArchivo.GenerarBackup(libroDao.obtenerTodosConEstado());
 
 		}catch(Exception e) {
 			System.out.println(e);
@@ -53,7 +54,7 @@ public class Main {
 		
 		
 		
-		//manejoArchivo.GenerarBackup();
+		
         
         
 
