@@ -1,4 +1,4 @@
-package com.eafit.biblioteca.aspectos;
+package com.eafit.biblioteca.general;
 
 import java.util.Properties;
 
@@ -10,29 +10,12 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
-import com.eafit.biblioteca.dto.Libro;
-import com.eafit.biblioteca.dto.Usuario;
+public class Correo {
 
-public aspect RegistroLibro {
-
-	String correoDestino = "prueba@hotmail.com";
-
-	pointcut login(): 
-		call(* com.eafit.biblioteca.dto.UsuarioDAO.iniciarSesion(Usuario));
-
-	after() returning (Usuario u): login()  {
-		correoDestino = u.getCorreo();
-	}
-
-	pointcut registrarLibro(): 
-		call(void com.eafit.biblioteca.dto.LibroDAO.agregar(Libro));
-
-	after() : registrarLibro()  {
-		System.out.println("Se agrego un libro");
-
+	public void enviarCorreo(String destinatario, String asunto, String msj) {
 		final String usuario = "anfegagra.94@gmail.com";
 		final String contrasena = "prueba.7";
-		String receptor = correoDestino;
+		String receptor = destinatario;
 
 		Properties properties = new Properties();
 		properties.put("mail.smtp.host", "smtp.gmail.com");
@@ -52,8 +35,8 @@ public aspect RegistroLibro {
 			Message mensaje = new MimeMessage(session);
 			mensaje.setFrom(new InternetAddress(usuario));
 			mensaje.setRecipients(Message.RecipientType.TO, InternetAddress.parse(receptor));
-			mensaje.setSubject("Registro exitoso");
-			mensaje.setText("El libro se ha registrado correctamente en la base de datos.");
+			mensaje.setSubject(asunto);
+			mensaje.setText(msj);
 
 			Transport.send(mensaje);
 

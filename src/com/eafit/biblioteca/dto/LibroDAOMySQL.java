@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.eafit.biblioteca.bd.Conexion;
+import com.eafit.biblioteca.excepcion.LibroExistenteException;
 
 public class LibroDAOMySQL implements LibroDAO {
 
@@ -28,7 +29,7 @@ public class LibroDAOMySQL implements LibroDAO {
 	Conexion conexion = null;
 
 	@Override
-	public void agregar(Libro c) throws SQLException, InstantiationException, IllegalAccessException {
+	public void agregar(Libro c) throws SQLException, LibroExistenteException, InstantiationException, IllegalAccessException {
 		conn = Conexion.getConexion();
 		String query = "INSERT INTO libro (nombre, descripcion, autor, genero, prestado) values(?, ?, ?, ?, ?)";
 		ps = conn.prepareStatement(query);
@@ -65,22 +66,22 @@ public class LibroDAOMySQL implements LibroDAO {
 
 	@Override
 	public List<Libro> obtenerTodos() throws SQLException, InstantiationException, IllegalAccessException {
-		List<Libro> categorias = new ArrayList<>();
+		List<Libro> libros = new ArrayList<>();
 		conn = Conexion.getConexion();
 		String s = "SELECT * FROM libro";
 		st = conn.createStatement();
 		rs = st.executeQuery(s);
 		while (rs.next()) {
-			categorias.add(new Libro(rs.getString("nombre"), rs.getString("descripcion"), rs.getString("autor"),
+			libros.add(new Libro(rs.getInt("id"), rs.getString("nombre"), rs.getString("descripcion"), rs.getString("autor"),
 					rs.getString("genero")));
 		}
 		conn.close();
-		return categorias;
+		return libros;
 	}
 
 	@Override
 	public Libro obtenerPorId(Integer id) throws SQLException, InstantiationException, IllegalAccessException {
-		Libro categoria = null;
+		Libro libro = null;
 		conn = Conexion.getConexion();
 		String query = "SELECT * FROM libro WHERE id=?";
 		ps = conn.prepareStatement(query);
@@ -88,42 +89,42 @@ public class LibroDAOMySQL implements LibroDAO {
 		rs = ps.executeQuery();
 
 		if (rs.next()) {
-			categoria = new Libro(rs.getInt("id"), rs.getString("nombre"), rs.getString("descripcion"));
+			libro = new Libro(rs.getInt("id"), rs.getString("nombre"), rs.getString("descripcion"));
 		}
 		conn.close();
-		return categoria;
+		return libro;
 	}
 
 	@Override
-	public List<Libro> obtenerPorNombre(String nombre) throws Exception {
-		List<Libro> categorias = new ArrayList<>();
+	public Libro obtenerPorNombre(String nombre) throws Exception {
+		Libro libro = null;
 		conn = Conexion.getConexion();
 		String query = "SELECT * FROM biblioteca.libro WHERE nombre = ?";
 		ps = conn.prepareStatement(query);
 		ps.setString(1, nombre);
 		rs = ps.executeQuery();
-		while (rs.next()) {
-			categorias.add(new Libro(rs.getString("nombre"), rs.getString("descripcion"), rs.getString("autor"),
-					rs.getString("genero")));
+		if (rs.next()) {
+			libro = new Libro(rs.getInt("id"), rs.getString("nombre"), rs.getString("descripcion"), rs.getString("autor"),
+					rs.getString("genero"));
 		}
 		conn.close();
-		return categorias;
+		return libro;
 	}
 
 	@Override
 	public List<Libro> obtenerPorAutor(String autor) throws Exception {
-		List<Libro> categorias = new ArrayList<>();
+		List<Libro> libros = new ArrayList<>();
 		conn = Conexion.getConexion();
 		String query = "SELECT * FROM biblioteca.libro WHERE autor = ?";
 		ps = conn.prepareStatement(query);
 		ps.setString(1, autor);
 		rs = ps.executeQuery();
 		while (rs.next()) {
-			categorias.add(new Libro(rs.getString("nombre"), rs.getString("descripcion"), rs.getString("autor"),
+			libros.add(new Libro(rs.getInt("id"), rs.getString("nombre"), rs.getString("descripcion"), rs.getString("autor"),
 					rs.getString("genero")));
 		}
 		conn.close();
-		return categorias;
+		return libros;
 	}
 
 	@Override
@@ -135,7 +136,7 @@ public class LibroDAOMySQL implements LibroDAO {
 		ps.setString(1, genero);
 		rs = ps.executeQuery();
 		while (rs.next()) {
-			categorias.add(new Libro(rs.getString("nombre"), rs.getString("descripcion"), rs.getString("autor"),
+			categorias.add(new Libro(rs.getInt("id"), rs.getString("nombre"), rs.getString("descripcion"), rs.getString("autor"),
 					rs.getString("genero")));
 		}
 		conn.close();
