@@ -30,9 +30,9 @@ public class Main {
 			usuarioDao.iniciarSesion(usuario);
 
 			System.out.println("-------------------agregar-------------------");
-			libro = libroDao.obtenerPorNombre("LibroK");
+			libro = libroDao.obtenerPorNombre("LibroKKK");
 			if (libro == null) {
-				libroDao.agregar(new Libro("LibroZ", "DescripciónZ", "AutorZ", "GeneroZ"));
+				libroDao.agregar(new Libro("LibroKKK", "DescripciónZ", "AutorZ", "GeneroZ"));
 			} else {
 				throw new LibroExistenteException();
 			}

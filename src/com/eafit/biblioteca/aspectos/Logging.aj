@@ -4,7 +4,6 @@ import java.util.logging.Logger;
 
 import com.eafit.biblioteca.dto.Libro;
 import com.eafit.biblioteca.general.Log;
-import com.eafit.biblioteca.excepcion.LibroExistenteException;
 
 public aspect Logging {
 
@@ -58,13 +57,6 @@ public aspect Logging {
 
 	after() : devolverLibro()  {
 		LOGGER.info("Se realizó la devolución de un libro.");
-	}
-	
-	pointcut handleLibroExistenteException(): 
-		handler(LibroExistenteException);
-
-	before() : handleLibroExistenteException()  {
-		LOGGER.info("El libro que está intentando agregar ya se encuentra en la base de datos");
 	}
 
 }
