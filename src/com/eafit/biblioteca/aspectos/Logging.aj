@@ -38,4 +38,25 @@ public aspect Logging {
 		LOGGER.info("Se realizó una consulta de libro por género a la base de datos.");
 	}
 
+	pointcut prestarLibro(): 
+		call(* com.eafit.biblioteca.dto.PrestamoDAO.prestarLibro(Libro, String)) ;
+
+	after() : prestarLibro()  {
+		LOGGER.info("Se realizó el préstamo de un libro.");
+	}
+
+	pointcut renovarPrestamo(): 
+		call(* com.eafit.biblioteca.dto.PrestamoDAO.renovarPrestamo(Libro, String, String)) ;
+
+	after() : renovarPrestamo()  {
+		LOGGER.info("Se renovó el préstamo de un libro.");
+	}
+
+	pointcut devolverLibro(): 
+		call(* com.eafit.biblioteca.dto.PrestamoDAO.devolverLibro(Libro, String)) ;
+
+	after() : devolverLibro()  {
+		LOGGER.info("Se realizó la devolución de un libro.");
+	}
+
 }

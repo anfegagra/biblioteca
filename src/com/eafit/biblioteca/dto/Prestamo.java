@@ -5,13 +5,13 @@ public class Prestamo {
 	private Integer id;
 	private Integer id_libro;
 	private String usuario;
-	private Date fechaInicio;
-	private Date fechaFin;
+	private String fechaInicio;
+	private String fechaFin;
 
 	public Prestamo() {
 	}
 
-	public Prestamo(Integer id, Integer id_libro, String usuario, Date fechaInicio, Date fechaFin) {
+	public Prestamo(Integer id, Integer id_libro, String usuario, String fechaInicio, String fechaFin) {
 		this.id = id;
 		this.id_libro = id_libro;
 		this.usuario = usuario;
@@ -54,7 +54,7 @@ public class Prestamo {
 		return fechaInicio;
 	}
 
-	public void setFechaInicio(Date fechaInicio) {
+	public void setFechaInicio(String fechaInicio) {
 		this.fechaInicio = fechaInicio;
 	}
 	
@@ -62,7 +62,7 @@ public class Prestamo {
 		return fechaFin;
 	}
 
-	public void setFechaFin(Date fechaFin) {
+	public void setFechaFin(String fechaFin) {
 		this.fechaFin = fechaFin;
 	}
 	

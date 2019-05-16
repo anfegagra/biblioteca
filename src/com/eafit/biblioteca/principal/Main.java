@@ -7,12 +7,11 @@ import java.util.List;
 import com.eafit.biblioteca.dto.Libro;
 import com.eafit.biblioteca.dto.LibroDAO;
 import com.eafit.biblioteca.dto.LibroDAOMySQL;
+import com.eafit.biblioteca.dto.PrestamoDAO;
+import com.eafit.biblioteca.dto.PrestamoDAOMySQL;
 import com.eafit.biblioteca.dto.Usuario;
 import com.eafit.biblioteca.dto.UsuarioDAO;
 import com.eafit.biblioteca.dto.UsuarioDAOMySLQL;
-import com.eafit.biblioteca.dto.Prestamo;
-import com.eafit.biblioteca.dto.PrestamoDAO;
-import com.eafit.biblioteca.dto.PrestamoDAOMySQL;
 
 public class Main {
 
@@ -24,7 +23,7 @@ public class Main {
 		List<Libro> libros = new ArrayList<>();
 
 		try {
-			
+
 			Usuario usuario = new Usuario("Andres", "1234");
 			usuarioDao.iniciarSesion(usuario);
 
@@ -32,7 +31,6 @@ public class Main {
 			libroDao.agregar(new Libro("LibroX", "DescripciónX", "AutorX", "GeneroX"));
 
 			System.out.println("-------------------buscar por nombre-------------------");
-
 			libros = libroDao.obtenerPorNombre("LibroX");
 			System.out.println(libros.get(0).getNombre());
 
@@ -43,16 +41,16 @@ public class Main {
 			System.out.println("-------------------buscar por genero-------------------");
 			libros = libroDao.obtenerPorGenero("GeneroX");
 			System.out.println(libros.get(0).getGenero());
-			
+
 			System.out.println("-------------------prestarLibro-------------------");
 			prestamoDao.prestarLibro(libros.get(0), usuario.getNombre());
-			
+
 			System.out.println("-------------------renovarPrestamo-------------------");
-			prestamoDao.renovarPrestamo(libros.get(0), usuario.getNombre(), new Date(2019,06,15));
-			
+			prestamoDao.renovarPrestamo(libros.get(0), usuario.getNombre(), "2019/06/15");
+
 			System.out.println("-------------------devolverLibro-------------------");
 			prestamoDao.devolverLibro(libros.get(0), usuario.getNombre());
-			
+
 		} catch (SQLException e) {
 			System.out.println("Hay problemas para acceder a la base de datos: " + e.getMessage());
 		} catch (Exception e) {

@@ -26,6 +26,30 @@ VALUES (0, "Libro4", "descripcion4", "autor2", "y", false);
 INSERT INTO libro (id, nombre, descripcion, autor, genero, prestado) 
 VALUES (0, "Libro5", "descripcion5", "autor3", "z", false);
 
+CREATE TABLE IF NOT EXISTS usuario (
+	id int(11) NOT NULL AUTO_INCREMENT, 
+    nombre varchar(100) NOT NULL,
+    correo varchar(100) NOT NULL,
+    contrasena varchar(100) NOT NULL,
+    PRIMARY KEY (id)
+);
+
+INSERT INTO biblioteca.usuario values (0, "Andres", "pipe-777@hotmail.com", "1234");
+
+CREATE TABLE IF NOT EXISTS Prestamo (
+	id int(11) NOT NULL AUTO_INCREMENT, 
+    id_libro int(11) NOT NULL, 
+    usuario varchar(100) NOT NULL,
+    fechaInicio varchar(100) NOT NULL,
+    fechaFin varchar(100) NOT NULL,
+    PRIMARY KEY (id)
+);
+
+INSERT INTO Prestamo (id, id_libro, usuario, fechaInicio, fechaFin) 
+VALUES (0, 1, "Roberto", "2019/05/15", "2019/05/30");
+
+###################################################################################
+
 SELECT * FROM biblioteca.libro;
 
 SELECT * FROM biblioteca.libro WHERE nombre = "Libro3";
@@ -34,18 +58,7 @@ SELECT * FROM biblioteca.libro WHERE autor = "autor1";
 
 SELECT * FROM biblioteca.libro WHERE genero = "x";
 
-CREATE TABLE IF NOT EXISTS Prestamo (
-	id int(11) NOT NULL AUTO_INCREMENT, 
-    id_libro int(11) NOT NULL, 
-    usuario varchar(100) NOT NULL,
-    fechaInicio varchar(100) NOT NULL,
-    fechaFin varchar(100) NOT NULL,
-    PRIMARY KEY (id),
-    FOREIGN KEY (id_libro)
-);
-
-INSERT INTO Prestamo (id, id_libro, usuario, fechaInicio, fechaFin) 
-VALUES (0, 1, "Roberto", "2019/05/15", "2019/05/30");
+SELECT * FROM biblioteca.usuario WHERE nombre="Andres" && contrasena="1234";
 
 SELECT * FROM biblioteca.Prestamo;
 
