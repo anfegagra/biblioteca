@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.eafit.biblioteca.bd.Conexion;
+import com.eafit.biblioteca.excepcion.LibroExistenteException;
 
 public class LibroDAOMySQL implements LibroDAO {
 
@@ -28,7 +29,7 @@ public class LibroDAOMySQL implements LibroDAO {
 	Conexion conexion = null;
 
 	@Override
-	public void agregar(Libro c) throws SQLException, InstantiationException, IllegalAccessException {
+	public void agregar(Libro c) throws SQLException, LibroExistenteException, InstantiationException, IllegalAccessException {
 		conn = Conexion.getConexion();
 		String query = "INSERT INTO libro (nombre, descripcion, autor, genero, prestado) values(?, ?, ?, ?, ?)";
 		ps = conn.prepareStatement(query);
@@ -95,19 +96,19 @@ public class LibroDAOMySQL implements LibroDAO {
 	}
 
 	@Override
-	public List<Libro> obtenerPorNombre(String nombre) throws Exception {
-		List<Libro> libros = new ArrayList<>();
+	public Libro obtenerPorNombre(String nombre) throws Exception {
+		Libro libro = null;
 		conn = Conexion.getConexion();
 		String query = "SELECT * FROM biblioteca.libro WHERE nombre = ?";
 		ps = conn.prepareStatement(query);
 		ps.setString(1, nombre);
 		rs = ps.executeQuery();
-		while (rs.next()) {
-			libros.add(new Libro(rs.getInt("id"), rs.getString("nombre"), rs.getString("descripcion"), rs.getString("autor"),
-					rs.getString("genero")));
+		if (rs.next()) {
+			libro = new Libro(rs.getInt("id"), rs.getString("nombre"), rs.getString("descripcion"), rs.getString("autor"),
+					rs.getString("genero"));
 		}
 		conn.close();
-		return libros;
+		return libro;
 	}
 
 	@Override

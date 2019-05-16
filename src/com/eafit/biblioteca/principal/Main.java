@@ -12,6 +12,7 @@ import com.eafit.biblioteca.dto.PrestamoDAOMySQL;
 import com.eafit.biblioteca.dto.Usuario;
 import com.eafit.biblioteca.dto.UsuarioDAO;
 import com.eafit.biblioteca.dto.UsuarioDAOMySLQL;
+import com.eafit.biblioteca.excepcion.LibroExistenteException;
 
 public class Main {
 
@@ -21,6 +22,7 @@ public class Main {
 		PrestamoDAO prestamoDao = new PrestamoDAOMySQL();
 		UsuarioDAO usuarioDao = new UsuarioDAOMySLQL();
 		List<Libro> libros = new ArrayList<>();
+		Libro libro = null;
 
 		try {
 
@@ -28,11 +30,16 @@ public class Main {
 			usuarioDao.iniciarSesion(usuario);
 
 			System.out.println("-------------------agregar-------------------");
-			libroDao.agregar(new Libro("LibroX", "DescripciónX", "AutorX", "GeneroX"));
+			libro = libroDao.obtenerPorNombre("LibroK");
+			if (libro == null) {
+				libroDao.agregar(new Libro("LibroZ", "DescripciónZ", "AutorZ", "GeneroZ"));
+			} else {
+				throw new LibroExistenteException();
+			}
 
 			System.out.println("-------------------buscar por nombre-------------------");
-			libros = libroDao.obtenerPorNombre("LibroX");
-			System.out.println(libros.get(0).getNombre());
+			libro = libroDao.obtenerPorNombre("LibroX");
+			System.out.println(libro.getNombre());
 
 			System.out.println("-------------------buscar por autor-------------------");
 			libros = libroDao.obtenerPorAutor("AutorX");
@@ -51,6 +58,8 @@ public class Main {
 			System.out.println("-------------------devolverLibro-------------------");
 			prestamoDao.devolverLibro(libros.get(0), usuario.getNombre());
 
+		} catch (LibroExistenteException e) {
+			System.out.println(e);
 		} catch (SQLException e) {
 			System.out.println("Hay problemas para acceder a la base de datos: " + e.getMessage());
 		} catch (Exception e) {
