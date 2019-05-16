@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path=""/>
+	<classpathentry kind="lib" path="C:/Users/JUAN/Downloads/com.mysql.jdbc_5.1.5.jar/com.mysql.jdbc_5.1.5.jar"/>
+	<classpathentry kind="lib" path="C:/Users/JUAN/.p2/pool/plugins/org.aspectj.runtime_1.9.2.201902200030.jar"/>
+	<classpathentry kind="con" path="org.eclipse.ajdt.core.ASPECTJRT_CONTAINER"/>
+	<classpathentry kind="lib" path="C:/Users/JUAN/Downloads/javax.mail.jar"/>
+	<classpathentry kind="lib" path="C:/Users/JUAN/Downloads/jar_files2/commons-codec-1.10.jar"/>
+	<classpathentry kind="lib" path="C:/Users/JUAN/Downloads/jar_files2/commons-collections4-4.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/JUAN/Downloads/jar_files3/curvesapi-1.04.jar"/>
+	<classpathentry kind="lib" path="C:/Users/JUAN/Downloads/jar_files3/poi-3.17.jar"/>
+	<classpathentry kind="lib" path="C:/Users/JUAN/Downloads/jar_files3/poi-ooxml-3.17.jar"/>
+	<classpathentry kind="lib" path="C:/Users/JUAN/Downloads/jar_files3/poi-ooxml-schemas-3.17.jar"/>
+	<classpathentry kind="lib" path="C:/Users/JUAN/Downloads/jar_files3/stax-api-1.0.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/JUAN/Downloads/jar_files3/xmlbeans-2.6.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/JUAN/Downloads/jar_files4/dom4j-2.0.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/JUAN/Downloads/jar_files4/jaxen-1.1.6.jar"/>
+	<classpathentry kind="output" path=""/>
+</classpath>

@@ -19,7 +19,7 @@ public class Log {
 
 		consoleHandler = new ConsoleHandler();
 		try {
-			fileHandler = new FileHandler("./logs/biblioteca.log");
+			fileHandler = new FileHandler("./biblioteca.log");
 		} catch (SecurityException | IOException exception) {
 			LOGGER.log(Level.SEVERE, "Ocurrió un error en el manejador de archivos.", exception);
 		}

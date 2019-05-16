@@ -19,6 +19,7 @@ public class UsuarioDAOMySLQL implements UsuarioDAO {
 	@Override
 	public Usuario iniciarSesion(Usuario usuario) throws SQLException {
 		Usuario u = null;
+		
 		conn = Conexion.getConexion();
 		String query = "SELECT * FROM biblioteca.usuario WHERE nombre=? && contrasena=?";
 		ps = conn.prepareStatement(query);
