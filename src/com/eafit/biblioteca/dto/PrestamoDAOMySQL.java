@@ -39,12 +39,18 @@ public class PrestamoDAOMySQL implements PrestamoDAO {
 		ps.setString(4, fechaFinPrestamo(date, dateFormat));
 		ps.executeUpdate();
 		conn.close();
+		conn = Conexion.getConexion();
+		query = "UPDATE Libro SET prestado=TRUE WHERE id = ?";
+		ps = conn.prepareStatement(query);
+		ps.setInt(1, l.getId());
+		ps.executeUpdate();
+		conn.close();
 	}
 
 	@Override
 	public void renovarPrestamo(Libro l, String usuario, String fechaFin) throws SQLException, InstantiationException, IllegalAccessException {
 		conn = Conexion.getConexion();
-		String query = "UPDATE Prestamo SET fechaFin=? WHERE id = ? AND usuario = ?";
+		String query = "UPDATE Prestamo SET fechaFin=? WHERE id_libro = ? AND usuario = ?";
 		ps = conn.prepareStatement(query);
 		ps.setString(1, fechaFin);
 		ps.setInt(2, l.getId());
