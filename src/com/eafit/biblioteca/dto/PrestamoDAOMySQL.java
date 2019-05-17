@@ -68,6 +68,12 @@ public class PrestamoDAOMySQL implements PrestamoDAO {
 		ps.setString(2, usuario);
 		ps.executeUpdate();
 		conn.close();
+		conn = Conexion.getConexion();
+		query = "UPDATE Libro SET prestado=FALSE WHERE id = ?";
+		ps = conn.prepareStatement(query);
+		ps.setInt(1, l.getId());
+		ps.executeUpdate();
+		conn.close();
 	}
 	
 	private static String fechaFinPrestamo(Date fecha, DateFormat dateFormat){
