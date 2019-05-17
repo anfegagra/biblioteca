@@ -22,7 +22,7 @@ public class ManejoArchivo {
 		return mensaje;
 	}
 	
-	public void LeerValoresPrueba(XSSFSheet sheet){
+	public void LeerValoresPrueba(){
 	
 	}
 

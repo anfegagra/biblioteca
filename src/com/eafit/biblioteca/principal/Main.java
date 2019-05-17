@@ -44,13 +44,17 @@ public class Main {
 		List<Libro> libros = new ArrayList<>();
 		Libro libro = null;
 		ManejoArchivo manejoArchivo = new ManejoArchivo();
-
-		File excelFile = new File("Backup.xlsx");
+		
+		//manejoArchivo.LeerValoresPrueba();
+		Libro c = new Libro("ahjkhaaa", "b", "accc", "d", false);
 		try {
-			FileInputStream fis = new FileInputStream(excelFile);
-	        XSSFWorkbook workbook = new XSSFWorkbook(fis);
-	        XSSFSheet sheet = workbook.getSheetAt(0);
-	        manejoArchivo.LeerValoresPrueba(sheet);
+			libroDao.agregar(c);
+		}catch (Exception e) {}
+//		File excelFile = new File("Backup.xlsx");
+//		try {
+//			FileInputStream fis = new FileInputStream(excelFile);
+//	        XSSFWorkbook workbook = new XSSFWorkbook(fis);
+//	        XSSFSheet sheet = workbook.getSheetAt(0);
 //	        String [][] valores = manejoArchivo.LeerValores(sheet);
 //	        workbook.close();
 //	        for(String[] registro: valores) {
@@ -59,11 +63,10 @@ public class Main {
 //	        	libroDao.agregar(libro);
 //	        }
 //	        manejoArchivo.GenerarBackup(libroDao.obtenerTodosConEstado());
-
-		} catch (Exception e) {
-			System.out.println(e);
-		}
-		manejoArchivo.prueba("hola");
+//		} catch (Exception e) {
+//			System.out.println(e);
+//		}
+		//manejoArchivo.prueba("hola");
 
 		// manejoArchivo.GenerarBackup();
 
