@@ -14,6 +14,8 @@ public interface LibroDAO {
 	public void modificar(Libro c) throws Exception;
 
 	public void retirar(Libro c) throws Exception;
+	
+	public void retirar(String nombre) throws Exception;
 
 	public List<Libro> obtenerTodos() throws Exception;
 	

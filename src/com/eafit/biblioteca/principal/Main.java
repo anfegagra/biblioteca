@@ -34,6 +34,9 @@ public class Main {
 
 	private static boolean sesion = true;
 
+	/**
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		
 		boolean inicioSesion = false;	
@@ -45,30 +48,12 @@ public class Main {
 		Libro libro = null;
 		ManejoArchivo manejoArchivo = new ManejoArchivo();
 		
-		//manejoArchivo.LeerValoresPrueba();
-		Libro c = new Libro("ahjkhaaa", "b", "accc", "d", false);
-		try {
-			libroDao.agregar(c);
-		}catch (Exception e) {}
-//		File excelFile = new File("Backup.xlsx");
+		manejoArchivo.CargarCatalogo();
+		
 //		try {
-//			FileInputStream fis = new FileInputStream(excelFile);
-//	        XSSFWorkbook workbook = new XSSFWorkbook(fis);
-//	        XSSFSheet sheet = workbook.getSheetAt(0);
-//	        String [][] valores = manejoArchivo.LeerValores(sheet);
-//	        workbook.close();
-//	        for(String[] registro: valores) {
-//	        	libro = new Libro(registro[0], registro[1], registro[2], registro[3], 
-//	        			Boolean.parseBoolean(registro[4]));
-//	        	libroDao.agregar(libro);
-//	        }
-//	        manejoArchivo.GenerarBackup(libroDao.obtenerTodosConEstado());
-//		} catch (Exception e) {
-//			System.out.println(e);
-//		}
-		//manejoArchivo.prueba("hola");
-
-		// manejoArchivo.GenerarBackup();
+//			libroDao.retirar("aaaa");
+//		}catch (Exception e) {}
+//		File excelFile = new File("Backup.xlsx");
 
 		Scanner leer = new Scanner(System.in);
 		int opcion = 0;

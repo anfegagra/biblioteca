@@ -22,9 +22,7 @@ public class ManejoArchivo {
 		return mensaje;
 	}
 	
-	public void LeerValoresPrueba(){
-	
-	}
+	public void CargarCatalogo(){}
 
 	public String [][] LeerValores(XSSFSheet sheet){
         int filas = sheet.getPhysicalNumberOfRows();

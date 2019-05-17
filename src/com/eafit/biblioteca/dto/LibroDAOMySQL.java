@@ -63,6 +63,19 @@ public class LibroDAOMySQL implements LibroDAO {
 		ps.executeUpdate();
 		conn.close();
 	}
+	
+	@Override
+	public void retirar(String nombre) throws SQLException, InstantiationException, IllegalAccessException {
+		try {
+			Libro c = obtenerPorNombre(nombre);
+			conn = Conexion.getConexion();
+			String query = "DELETE FROM libro WHERE id=?";
+			ps = conn.prepareStatement(query);
+			ps.setInt(1, c.getId());
+			ps.executeUpdate();
+			conn.close();
+		}catch(Exception e) {}
+	}
 
 	@Override
 	public List<Libro> obtenerTodos() throws SQLException, InstantiationException, IllegalAccessException {
@@ -157,5 +170,4 @@ public class LibroDAOMySQL implements LibroDAO {
 		conn.close();
 		return categorias;
 	}
-
 }

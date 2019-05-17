@@ -4,6 +4,7 @@ import com.eafit.biblioteca.dto.Libro;
 import com.eafit.biblioteca.dto.LibroDAO;
 import com.eafit.biblioteca.dto.LibroDAOMySQL;
 import com.eafit.biblioteca.dto.Usuario;
+import com.eafit.biblioteca.excepcion.LibroExistenteException;
 import com.eafit.biblioteca.general.Correo;
 
 import java.io.File;
@@ -32,11 +33,11 @@ public aspect BackupBD {
 		System.out.println(" hhff"+mensaje);
 	}
 	
-	pointcut escribir(): 
-		execution(* com.eafit.biblioteca.dto.LibroDAO.agregar(*));
+	pointcut escribirCatalogo(): 
+		execution(* com.eafit.biblioteca.dto.LibroDAO.agregar(*))
+		|| execution(* com.eafit.biblioteca.dto.LibroDAO.retirar(*));
 
-	after(): escribir()  {
-		System.out.println("aaaa");
+	after(): escribirCatalogo()  {
 		XSSFWorkbook workbook = new XSSFWorkbook(); 
 		  
         // Create a blank sheet 
@@ -72,7 +73,7 @@ public aspect BackupBD {
 
 	
 	pointcut lecturaExcel(): 
-		call(* com.eafit.biblioteca.backup.ManejoArchivo.LeerValoresPrueba());
+		call(* com.eafit.biblioteca.backup.ManejoArchivo.CargarCatalogo());
 
 	before(): lecturaExcel()  {
 		File excelFile = new File("Backup.xlsx");
@@ -106,9 +107,12 @@ public aspect BackupBD {
 	            i++;
 	        }
 	        for(String[] registro: valores) {
-	        	libro = new Libro(registro[0], registro[1], registro[2], registro[3], 
-	        			Boolean.parseBoolean(registro[4]));       	
-        		libroDao.agregar(libro);
+	        	Libro validar = libroDao.obtenerPorNombre(registro[0]);
+	        	if(validar == null) {
+	        		libro = new Libro(registro[0], registro[1], registro[2], registro[3], 
+		        			Boolean.parseBoolean(registro[4]));       	
+	        		libroDao.agregar(libro);
+	        	}	        	
 	        }
         }catch(Exception e) {}
 	}
