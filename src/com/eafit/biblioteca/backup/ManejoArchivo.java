@@ -16,6 +16,15 @@ public class ManejoArchivo {
 	
 	private static final CellType STRING = null;
 	private static final CellType NUMERIC = null;
+	
+	public String prueba(String mensaje) {
+		System.out.println(mensaje);
+		return mensaje;
+	}
+	
+	public void LeerValoresPrueba(XSSFSheet sheet){
+	
+	}
 
 	public String [][] LeerValores(XSSFSheet sheet){
         int filas = sheet.getPhysicalNumberOfRows();
@@ -66,30 +75,17 @@ public class ManejoArchivo {
               cell.setCellValue(campo); 
               
           } 
-      } 
-
-//        for (String[] libro : arrayLibros) { 
-//            // this creates a new row in the sheet 
-//            Row row = sheet.createRow(rownum++); 
-//            int cellnum = 0; 
-//            for (String campo : libro) { 
-//                // this line creates a cell in the next column of that row 
-//                Cell cell = row.createCell(cellnum++); 
-//                
-//                cell.setCellValue(campo); 
-//                
-//            } 
-//        } 
-        try { 
-            // this Writes the workbook gfgcontribute 
-            FileOutputStream out = new FileOutputStream(new File("backupgenerado.xlsx")); 
-            workbook.write(out); 
-            out.close(); 
-            workbook.close();
         } 
-        catch (Exception e) { 
-            e.printStackTrace(); 
-        } 
+	    try { 
+	        // this Writes the workbook gfgcontribute 
+	        FileOutputStream out = new FileOutputStream(new File("backupgenerado.xlsx")); 
+	        workbook.write(out); 
+	        out.close(); 
+	        workbook.close();
+	    } 
+	    catch (Exception e) { 
+	        e.printStackTrace(); 
+	    } 
         
 	}
 	
