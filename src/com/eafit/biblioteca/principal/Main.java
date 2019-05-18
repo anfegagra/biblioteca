@@ -74,12 +74,12 @@ public class Main {
 			desplegarMenu(MODULOS);
 			opcion = leer.nextInt();
 			validarOpcion(opcion, MODULOS);
-			if (opcion == 1) {
+			if (opcion == 0) {
 				// Gestion Libros
 				desplegarMenu(GESTION_LIBROS);
 				opcion = leer.nextInt();
 				validarOpcion(opcion, GESTION_LIBROS);
-				if (opcion == 1) {
+				if (opcion == 0) {
 					// Agregar Libro
 					System.out.println("Ingrese nombre: ");
 					String nombre = leer.next();
@@ -111,7 +111,7 @@ public class Main {
 				desplegarMenu(GESTION_PRESTAMOS);
 				opcion = leer.nextInt();
 				validarOpcion(opcion, GESTION_PRESTAMOS);
-				if (opcion == 1) {
+				if (opcion == 0) {
 					// Prestar Libro
 					System.out.println("Ingrese nombre: ");
 					String nombre = leer.next();
@@ -123,7 +123,7 @@ public class Main {
 					} else {
 						throw new LibroExistenteException();
 					}
-				}else if (opcion == 2) {
+				}else if (opcion == 1) {
 					// Devolver Libro
 					System.out.println("Ingrese nombre: ");
 					String nombre = leer.next();
