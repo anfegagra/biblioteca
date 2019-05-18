@@ -50,8 +50,6 @@ public class Main {
 		
 		manejoArchivo.CargarCatalogo();
 		//manejoArchivo.CargarPrestamos();
-		
-		
 
 		Scanner leer = new Scanner(System.in);
 		int opcion = 0;
@@ -64,7 +62,7 @@ public class Main {
 				validarOpcion(opcion, INICIO_SESION);
 				System.out.println("Ingreses usuario: ");
 				String user = leer.next();
-				System.out.println("Ingreses contrase�a: ");
+				System.out.println("Ingreses contrasenia: ");
 				String password = leer.next();
 				Usuario usuario = new Usuario(user, password);
 				try {
@@ -81,11 +79,77 @@ public class Main {
 				desplegarMenu(GESTION_LIBROS);
 				opcion = leer.nextInt();
 				validarOpcion(opcion, GESTION_LIBROS);
+				if (opcion == 1) {
+					// Agregar Libro
+					System.out.println("Ingrese nombre: ");
+					String nombre = leer.next();
+					libro = libroDao.obtenerPorNombre(nombre);
+					if (libro == null) {
+						System.out.println("Ingrese Descripcion: ");
+						String des = leer.next();
+						System.out.println("Ingrese Autor: ");
+						String autor = leer.next();
+						System.out.println("Ingrese Genero: ");
+						String gen = leer.next();
+						libroDao.agregar(new Libro(nombre, des, autor, gen));
+					} else {
+						throw new LibroExistenteException();
+					}
+				} else {
+					// Retirar Libro
+					System.out.println("Ingrese nombre: ");
+					String nombre = leer.next();
+					libro = libroDao.obtenerPorNombre(nombre);
+					if (libro == null) {
+						libroDao.retirar(libro);
+					} else {
+						throw new LibroExistenteException();
+					}
+				}
 			} else {
 				// Gestion Prestamos
 				desplegarMenu(GESTION_PRESTAMOS);
 				opcion = leer.nextInt();
 				validarOpcion(opcion, GESTION_PRESTAMOS);
+				if (opcion == 1) {
+					// Prestar Libro
+					System.out.println("Ingrese nombre: ");
+					String nombre = leer.next();
+					libro = libroDao.obtenerPorNombre(nombre);
+					if (libro == null) {
+						System.out.println("Ingrese usuario: ");
+						String user = leer.next();
+						prestamoDao.prestarLibro(libro, user);
+					} else {
+						throw new LibroExistenteException();
+					}
+				}else if (opcion == 2) {
+					// Devolver Libro
+					System.out.println("Ingrese nombre: ");
+					String nombre = leer.next();
+					libro = libroDao.obtenerPorNombre(nombre);
+					if (libro == null) {
+						System.out.println("Ingrese usuario: ");
+						String user = leer.next();
+						prestamoDao.devolverLibro(libro, user);
+					} else {
+						throw new LibroExistenteException();
+					}
+				}else {
+					// Renovar prestamo
+					System.out.println("Ingrese nombre: ");
+					String nombre = leer.next();
+					libro = libroDao.obtenerPorNombre(nombre);
+					if (libro == null) {
+						System.out.println("Ingrese usuario: ");
+						String user = leer.next();
+						System.out.println("Ingrese nueva fecha: ");
+						String fecha = leer.next();
+						prestamoDao.renovarPrestamo(libro, user, fecha);
+					} else {
+						throw new LibroExistenteException();
+					}
+				}
 			}
 
 		} while (sesion);
@@ -135,8 +199,8 @@ public class Main {
 	}
 
 	public static void desplegarMenu(String[] menu) {
+		System.out.println("ELIJA UNA OPCION:");
 		for (int i = 0; i < menu.length; i++) {
-			System.out.println("ELIJA UNA OPCI�N:");
 			System.out.println(i + ": " + menu[i]);
 		}
 	}
@@ -144,6 +208,9 @@ public class Main {
 	public static void validarOpcion(int opcion, String[] menu) {
 		if (opcion == menu.length - 1) {
 			sesion = false;
+			System.exit(0);
+		}else if( opcion < 0 || opcion > menu.length - 1) {
+			System.out.println("Ingreso opcion incorrecta, ejecute nuevamente el programa");
 			System.exit(0);
 		}
 
