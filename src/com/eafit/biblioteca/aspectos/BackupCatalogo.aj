@@ -20,18 +20,12 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import com.eafit.biblioteca.backup.ManejoArchivo;
 
-public aspect BackupBD {
+public aspect BackupCatalogo {
 	
 	Libro libro = null;
 	LibroDAO libroDao = new LibroDAOMySQL();
 	ManejoArchivo manejoArchivo = new ManejoArchivo();
 
-	pointcut pruebaPT(ManejoArchivo manejoArchivo, String mensaje): 
-		call(* com.eafit.biblioteca.backup.ManejoArchivo.prueba(String)) && args(mensaje) && target(manejoArchivo);
-
-	before(ManejoArchivo manejoArchivo, String mensaje): pruebaPT(manejoArchivo, mensaje)  {
-		System.out.println(" hhff"+mensaje);
-	}
 	
 	pointcut escribirCatalogo(): 
 		execution(* com.eafit.biblioteca.dto.LibroDAO.agregar(*))
@@ -61,7 +55,7 @@ public aspect BackupBD {
 	        } 
 		    
 	        // this Writes the workbook gfgcontribute 
-	        FileOutputStream out = new FileOutputStream(new File("backupgenerado.xlsx")); 
+	        FileOutputStream out = new FileOutputStream(new File("BackupGeneradoCatalogo.xlsx")); 
 	        workbook.write(out); 
 	        out.close(); 
 	        workbook.close();
@@ -76,7 +70,7 @@ public aspect BackupBD {
 		call(* com.eafit.biblioteca.backup.ManejoArchivo.CargarCatalogo());
 
 	before(): lecturaExcel()  {
-		File excelFile = new File("Backup.xlsx");
+		File excelFile = new File("BackupCatalogo.xlsx");
 		try {
 			FileInputStream fis = new FileInputStream(excelFile);
 	        XSSFWorkbook workbook = new XSSFWorkbook(fis);

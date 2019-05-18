@@ -49,11 +49,9 @@ public class Main {
 		ManejoArchivo manejoArchivo = new ManejoArchivo();
 		
 		manejoArchivo.CargarCatalogo();
+		//manejoArchivo.CargarPrestamos();
 		
-//		try {
-//			libroDao.retirar("aaaa");
-//		}catch (Exception e) {}
-//		File excelFile = new File("Backup.xlsx");
+		
 
 		Scanner leer = new Scanner(System.in);
 		int opcion = 0;

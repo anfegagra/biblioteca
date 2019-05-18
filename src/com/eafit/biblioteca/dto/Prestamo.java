@@ -18,6 +18,13 @@ public class Prestamo {
 		this.fechaInicio = fechaInicio;
 		this.fechaFin = fechaFin;
 	}
+	
+	public Prestamo(Integer id_libro, String usuario, String fechaInicio, String fechaFin) {
+		this.id_libro = id_libro;
+		this.usuario = usuario;
+		this.fechaInicio = fechaInicio;
+		this.fechaFin = fechaFin;
+	}
 
 	public Integer getId() {
 		return id;

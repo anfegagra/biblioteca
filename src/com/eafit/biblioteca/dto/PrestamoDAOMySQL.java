@@ -13,10 +13,13 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 import com.eafit.biblioteca.bd.Conexion;
+import com.eafit.biblioteca.excepcion.LibroExistenteException;
 
 public class PrestamoDAOMySQL implements PrestamoDAO {
 	
@@ -81,5 +84,33 @@ public class PrestamoDAOMySQL implements PrestamoDAO {
 	      calendar.setTime(fecha); 
 	      calendar.add(Calendar.DAY_OF_YEAR, 15);  
 	      return dateFormat.format(calendar.getTime()); 
+	}
+	
+	@Override
+	public List<Prestamo> consultarPrestamos() throws SQLException, InstantiationException, IllegalAccessException {
+		List<Prestamo> prestamos = new ArrayList<>();
+		conn = Conexion.getConexion();
+		String s = "SELECT * FROM prestamo";
+		st = conn.createStatement();
+		rs = st.executeQuery(s);
+		while (rs.next()) {
+			prestamos.add(new Prestamo(rs.getInt("id"), rs.getInt("id_libro"), rs.getString("usuario"), 
+					rs.getString("fechaInicio"), rs.getString("fechaFin")));
+		}
+		conn.close();
+		return prestamos;
+	}
+	
+	@Override
+	public void agregarRegistroPrestamo(Prestamo c) throws SQLException, LibroExistenteException, InstantiationException, IllegalAccessException {
+		conn = Conexion.getConexion();
+		String query = "INSERT INTO prestamo (id_libro, usuario, fechaInicio, fechaFin)  values(?, ?, ?, ?, ?)";
+		ps = conn.prepareStatement(query);
+		ps.setInt(1, c.getIdLibro());
+		ps.setString(2, c.getUsuario());
+		ps.setString(3, c.getFechaInicio());
+		ps.setString(4, c.getFechaFin());
+		ps.executeUpdate();
+		conn.close();
 	}
 }
