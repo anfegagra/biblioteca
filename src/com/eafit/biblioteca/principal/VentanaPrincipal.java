@@ -147,16 +147,16 @@ public class VentanaPrincipal extends JFrame {
 		
 		lblNewLabel_1 = new JLabel("");
 		lblNewLabel_1.setBounds(21, 40, 16, 16);
-		lblNewLabel_1.setIcon(new ImageIcon(VentanaPrincipal.class.getResource("/imag/usuario-hombre.png")));
+		lblNewLabel_1.setIcon(new ImageIcon(VentanaPrincipal.class.getResource("/img/usuario-hombre.png")));
 		panel.add(lblNewLabel_1);
 		
 		lblNewLabel_2 = new JLabel("\r\n");
-		lblNewLabel_2.setIcon(new ImageIcon(VentanaPrincipal.class.getResource("/imag/llave-de-una-casa.png")));
+		lblNewLabel_2.setIcon(new ImageIcon(VentanaPrincipal.class.getResource("/img/llave-de-una-casa.png")));
 		lblNewLabel_2.setBounds(21, 90, 20, 16);
 		panel.add(lblNewLabel_2);
 		
 		lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon(VentanaPrincipal.class.getResource("/imag/bloquear.png")));
+		lblNewLabel.setIcon(new ImageIcon(VentanaPrincipal.class.getResource("/img/bloquear.png")));
 		lblNewLabel.setBounds(193, 11, 64, 64);
 		contentPane.add(lblNewLabel);
 		

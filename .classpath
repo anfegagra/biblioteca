@@ -5,5 +5,15 @@
 	<classpathentry kind="con" path="org.eclipse.ajdt.core.ASPECTJRT_CONTAINER"/>
 	<classpathentry kind="lib" path="C:/Users/garandre/Desktop/Proyecto final/mysql-connector-java-5.1.47.jar"/>
 	<classpathentry kind="lib" path="C:/Users/garandre/Desktop/Proyecto final/javamail-1.2/mail.jar"/>
+	<classpathentry kind="lib" path="C:/Users/garandre/Desktop/Proyecto final/librerias/commons-codec-1.10.jar"/>
+	<classpathentry kind="lib" path="C:/Users/garandre/Desktop/Proyecto final/librerias/commons-collections4-4.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/garandre/Desktop/Proyecto final/librerias/curvesapi-1.04.jar"/>
+	<classpathentry kind="lib" path="C:/Users/garandre/Desktop/Proyecto final/librerias/dom4j-2.0.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/garandre/Desktop/Proyecto final/librerias/jaxen-1.1.6.jar"/>
+	<classpathentry kind="lib" path="C:/Users/garandre/Desktop/Proyecto final/librerias/poi-3.17.jar"/>
+	<classpathentry kind="lib" path="C:/Users/garandre/Desktop/Proyecto final/librerias/poi-ooxml-3.17.jar"/>
+	<classpathentry kind="lib" path="C:/Users/garandre/Desktop/Proyecto final/librerias/poi-ooxml-schemas-3.17.jar"/>
+	<classpathentry kind="lib" path="C:/Users/garandre/Desktop/Proyecto final/librerias/stax-api-1.0.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/garandre/Desktop/Proyecto final/librerias/xmlbeans-2.6.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

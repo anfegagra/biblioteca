@@ -210,13 +210,13 @@ public class VentanaLibro extends JFrame {
 		PanelInfoLibro.add(txtAutor);
 
 		JButton btnBuscarAutor = new JButton("");
-		btnBuscarAutor.setIcon(new ImageIcon(VentanaLibro.class.getResource("/imag/archivo (1).png")));
+		btnBuscarAutor.setIcon(new ImageIcon(VentanaLibro.class.getResource("/img/archivo (1).png")));
 
 		btnBuscarAutor.setBounds(259, 127, 19, 20);
 		PanelInfoLibro.add(btnBuscarAutor);
 
 		JButton btnGenero = new JButton("");
-		btnGenero.setIcon(new ImageIcon(VentanaLibro.class.getResource("/imag/archivo (1).png")));
+		btnGenero.setIcon(new ImageIcon(VentanaLibro.class.getResource("/img/archivo (1).png")));
 		btnGenero.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
@@ -249,7 +249,7 @@ public class VentanaLibro extends JFrame {
 		PanelInfoLibro.add(btnGenero);
 
 		JButton btnBuscarNombre = new JButton("");
-		btnBuscarNombre.setIcon(new ImageIcon(VentanaLibro.class.getResource("/imag/archivo (1).png")));
+		btnBuscarNombre.setIcon(new ImageIcon(VentanaLibro.class.getResource("/img/archivo (1).png")));
 		btnBuscarNombre.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				/**
@@ -288,14 +288,14 @@ public class VentanaLibro extends JFrame {
 		PanelInfoLibro.add(btnBuscarNombre);
 
 		JButton btnAgregar = new JButton();
-		btnAgregar.setIcon(new ImageIcon(VentanaLibro.class.getResource("/imag/add_icon-icons.com_74429.png")));
+		btnAgregar.setIcon(new ImageIcon(VentanaLibro.class.getResource("/img/add_icon-icons.com_74429.png")));
 		btnAgregar.setBounds(0, 233, 131, 33);
 		PanelInfoLibro.add(btnAgregar);
 		btnAgregar.setText("AGREGAR");
 		btnAgregar.setBackground(new Color(255, 255, 204));
 
 		JButton btnEliminar = new JButton();
-		btnEliminar.setIcon(new ImageIcon(VentanaLibro.class.getResource("/imag/delete_40623.png")));
+		btnEliminar.setIcon(new ImageIcon(VentanaLibro.class.getResource("/img/delete_40623.png")));
 		btnEliminar.setBounds(141, 233, 131, 33);
 		PanelInfoLibro.add(btnEliminar);
 		btnEliminar.addActionListener(new ActionListener() {
@@ -329,14 +329,14 @@ public class VentanaLibro extends JFrame {
 
 		JButton btnModificar = new JButton();
 		btnModificar.setIcon(
-				new ImageIcon(VentanaLibro.class.getResource("/imag/note-task-comment-message-edit-write_108613.png")));
+				new ImageIcon(VentanaLibro.class.getResource("/img/note-task-comment-message-edit-write_108613.png")));
 		btnModificar.setBounds(282, 233, 136, 33);
 		PanelInfoLibro.add(btnModificar);
 		btnModificar.setBackground(new Color(204, 153, 51));
 		btnModificar.setText("MODIFICAR");
 
 		JButton btnNewButton = new JButton("");
-		btnNewButton.setIcon(new ImageIcon(VentanaLibro.class.getResource("/imag/archivo (1).png")));
+		btnNewButton.setIcon(new ImageIcon(VentanaLibro.class.getResource("/img/archivo (1).png")));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
@@ -511,7 +511,7 @@ public class VentanaLibro extends JFrame {
 		ImageIcon fot = new ImageIcon("/imag/libreria");
 
 		JLabel lblHeader = new JLabel("New label");
-		lblHeader.setIcon(new ImageIcon(VentanaLibro.class.getResource("/imag/biblioteca_header.jpg")));
+		lblHeader.setIcon(new ImageIcon(VentanaLibro.class.getResource("/img/biblioteca_header.jpg")));
 		lblHeader.setBounds(0, 0, 940, 235);
 		panel_2.add(lblHeader);
 
@@ -524,7 +524,7 @@ public class VentanaLibro extends JFrame {
 
 		JButton btnPrestamos = new JButton("");
 		btnPrestamos.setBackground(new Color(255, 255, 255));
-		btnPrestamos.setIcon(new ImageIcon(VentanaLibro.class.getResource("/imag/prestamo2.png")));
+		btnPrestamos.setIcon(new ImageIcon(VentanaLibro.class.getResource("/img/prestamo2.png")));
 		btnPrestamos.setBounds(10, 29, 156, 143);
 		btnPrestamos.setFont(new Font("Baskerville Old Face", Font.BOLD, 12));
 
@@ -551,7 +551,7 @@ public class VentanaLibro extends JFrame {
 				dispose();
 			}
 		});
-		btnNewButton_1.setIcon(new ImageIcon(VentanaLibro.class.getResource("/imag/libreria.png")));
+		btnNewButton_1.setIcon(new ImageIcon(VentanaLibro.class.getResource("/img/libreria.png")));
 		btnNewButton_1.setBounds(10, 35, 221, 137);
 		panel_3.add(btnNewButton_1);
 

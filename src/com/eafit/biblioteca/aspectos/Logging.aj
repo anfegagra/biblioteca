@@ -10,18 +10,27 @@ public aspect Logging {
 	private static final Log log = new Log();
 	private static final Logger LOGGER = log.obtenerLogger();
 
-	pointcut agregarLibro(): 
-		call(* com.eafit.biblioteca.dto.LibroDAO.agregar(Libro)) ;
+	pointcut agregarLibro(Libro libro): 
+		call(* com.eafit.biblioteca.dto.LibroDAO.agregar(Libro)) 
+		&& args(libro);
 
-	after() : agregarLibro()  {
-		LOGGER.info("Se realizó una inserción en la base de datos.");
+	after(Libro libro) : agregarLibro(libro)  {
+		LOGGER.info("El libro con nombre '" + libro.getNombre() + "' se insertó en la base de datos.");
 	}
 
-	pointcut obtenerPorNombre(): 
-		call(* com.eafit.biblioteca.dto.LibroDAO.obtenerPorNombre(String)) ;
+	pointcut obtenerPorNombre(String nombre): 
+		call(* com.eafit.biblioteca.dto.LibroDAO.obtenerPorNombre(String)) 
+		&& args(nombre);
 
-	after() : obtenerPorNombre()  {
-		LOGGER.info("Se realizó una consulta de libro por nombre a la base de datos.");
+	after(String nombre) : obtenerPorNombre(nombre)  {
+		LOGGER.info("El libro con nombre '" + nombre + "' fue consultado a la base de datos.");
+	}
+	
+	pointcut obtenerTodosConEstado(): 
+		call(* com.eafit.biblioteca.dto.LibroDAO.obtenerTodosConEstado());
+
+	after() : obtenerTodosConEstado()  {
+		LOGGER.info("Se realizó una consulta de los libros disponibles.");
 	}
 
 	pointcut obtenerPorAutor(): 
@@ -36,6 +45,13 @@ public aspect Logging {
 
 	after() : obtenerPorGenero()  {
 		LOGGER.info("Se realizó una consulta de libro por género a la base de datos.");
+	}
+	
+	pointcut consultarPrestamos(): 
+		call(* com.eafit.biblioteca.dto.PrestamoDAO.consultarPrestamos()) ;
+
+	after() : consultarPrestamos()  {
+		LOGGER.info("Se realizó una consulta de los préstamos activos.");
 	}
 
 	pointcut prestarLibro(): 

@@ -186,7 +186,7 @@ public class VentanaPrestamos extends JFrame {
 		contentPane.add(panel_1);
 		panel_1.setLayout(null);
 
-		JButton btnAgregar = new JButton(new ImageIcon(VentanaPrestamos.class.getResource("/imag/add_icon-icons.com_74429.png")));
+		JButton btnAgregar = new JButton(new ImageIcon(VentanaPrestamos.class.getResource("/img/add_icon-icons.com_74429.png")));
 		btnAgregar.setText("PRESTAR");
 		btnAgregar.setBackground(new Color(255, 255, 204));
 		btnAgregar.addActionListener(new ActionListener() {
@@ -217,7 +217,7 @@ public class VentanaPrestamos extends JFrame {
 		btnAgregar.setBounds(0, 0, 131, 44);
 		panel_1.add(btnAgregar);
 
-		JButton btnModificar = new JButton(new ImageIcon(VentanaPrestamos.class.getResource("/imag/note-task-comment-message-edit-write_108613.png")));
+		JButton btnModificar = new JButton(new ImageIcon(VentanaPrestamos.class.getResource("/img/note-task-comment-message-edit-write_108613.png")));
 		btnModificar.setBackground(new Color(255, 255, 204));
 		btnModificar.setText("RENOVAR");
 		btnModificar.addActionListener(new ActionListener() {
@@ -262,7 +262,7 @@ public class VentanaPrestamos extends JFrame {
 		btnModificar.setBounds(282, 0, 148, 44);
 		panel_1.add(btnModificar);
 
-		JButton btnEliminar = new JButton(new ImageIcon(VentanaPrestamos.class.getResource("/imag/delete_40623.png")));
+		JButton btnEliminar = new JButton(new ImageIcon(VentanaPrestamos.class.getResource("/img/delete_40623.png")));
 		btnEliminar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
@@ -308,7 +308,7 @@ public class VentanaPrestamos extends JFrame {
 		panel_2.setLayout(null);
 
 		JLabel lblNewLabel = new JLabel("\r\n");
-		lblNewLabel.setIcon(new ImageIcon(VentanaPrestamos.class.getResource("/imag/biblioteca_header.jpg")));
+		lblNewLabel.setIcon(new ImageIcon(VentanaPrestamos.class.getResource("/img/biblioteca_header.jpg")));
 
 		lblNewLabel.setBounds(0, 0, 463, 53);
 		panel_2.add(lblNewLabel);
@@ -327,7 +327,7 @@ public class VentanaPrestamos extends JFrame {
 		JButton btnPrestamos = new JButton("");
 		btnPrestamos.setBackground(null);
 		btnPrestamos.setBorder(null);
-		btnPrestamos.setIcon(new ImageIcon(VentanaPrestamos.class.getResource("/imag/libro.png")));
+		btnPrestamos.setIcon(new ImageIcon(VentanaPrestamos.class.getResource("/img/libro.png")));
 		btnPrestamos.setBounds(10, 22, 176, 140);
 		btnPrestamos.setFont(new Font("Baskerville Old Face", Font.BOLD, 12));
 		

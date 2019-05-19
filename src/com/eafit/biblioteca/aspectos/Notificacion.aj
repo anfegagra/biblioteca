@@ -16,11 +16,13 @@ public aspect Notificacion {
 		correoDestino = u.getCorreo();
 	}
 
-	pointcut enviarCorreoPrestamo(): 
-		call(void com.eafit.biblioteca.dto.PrestamoDAO.prestarLibro(Libro, String));
+	pointcut enviarCorreoPrestamo(Libro libro, String usuario): 
+		call(void com.eafit.biblioteca.dto.PrestamoDAO.prestarLibro(Libro, String))
+		&& args(libro, usuario);
 
-	after() : enviarCorreoPrestamo()  {
-		correo.enviarCorreo(correoDestino, "Préstamo exitoso!", "Has prestado el libro exitosamente!.");
+	after(Libro libro, String usuario) : enviarCorreoPrestamo(libro, usuario)  {
+		correo.enviarCorreo(correoDestino, "Préstamo exitoso!", "Hola " + usuario + ",\n" + " El libro con nombre '"
+				+ libro.getNombre() + "' ha sido prestado exitosamente!.");
 	}
 
 	pointcut enviarCorreoRenovacion(): 
