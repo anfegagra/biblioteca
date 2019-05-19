@@ -124,14 +124,18 @@ public class VentanaPrincipal extends JFrame {
 				Usuario usuario = new Usuario(user, password);
 				final VentanaLibro  w= new VentanaLibro();
 
-				w.setVisible(true);
-				dispose();
+				
 
 				try {
 					usuarioDao.iniciarSesion(usuario);
+					w.setVisible(true);
+					dispose();
 				
 
-				}catch (Exception e) {}
+				}catch (Exception e) {
+
+					JOptionPane.showMessageDialog(null, "Datos incorrectos");
+				}
 				inicioSesion = true;
 			}
 						
