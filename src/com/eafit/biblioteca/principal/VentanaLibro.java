@@ -455,6 +455,7 @@ public class VentanaLibro extends JFrame {
 					} else if (libro2 != null) {
 
 						JOptionPane.showMessageDialog(null, "Libro ya existe");
+						throw new LibroExistenteException();
 					} else {
 						JOptionPane.showMessageDialog(null, "Libro agregado exitosamente");
 						libro.agregar(new Libro(txtNombre.getText(), txtDescripcion.getText(), txtAutor.getText(),
@@ -463,9 +464,9 @@ public class VentanaLibro extends JFrame {
 
 					}
 
+				} catch (LibroExistenteException e) {
+					System.out.println(e);
 				} catch (Exception e) {
-					// TODO Auto-generated catch block
-
 					e.printStackTrace();
 				}
 			}
