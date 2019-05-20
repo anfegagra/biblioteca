@@ -26,7 +26,7 @@ Se deben incluír las siguientes librerías:
  - stax-api-1.0.1
  - xmlbeans-2.6.0
  
-Nota: Para correr la aplicación se debe ejecutar el archivo VentanaPrincipal ubicado en el paquete com.eafit.biblioteca.principal, y además ejecutar los siguientes queries requeridos para el correcto funcionamiento:
+Nota: en el video llamado "funcionamiento" se muestra la aplicación de la biblioteca funcionando Adicionalmente para correr la aplicación se debe ejecutar el archivo VentanaPrincipal ubicado en el paquete com.eafit.biblioteca.principal, y además ejecutar los siguientes queries requeridos para el correcto funcionamiento:
 
 CREATE DATABASE IF NOT EXISTS biblioteca;
 USE biblioteca;
