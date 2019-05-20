@@ -49,7 +49,7 @@ CREATE TABLE IF NOT EXISTS usuario (
     PRIMARY KEY (id)
 );
 
-INSERT INTO biblioteca.usuario values (0, "<nombre>", "<uncorreoreal>", "<contrasena>");
+INSERT INTO biblioteca.usuario values (0, "sunombre", "reemplazarporuncorreoreal", "contrasena");
 
 CREATE TABLE IF NOT EXISTS Prestamo (
 	id int(11) NOT NULL AUTO_INCREMENT, 
