@@ -34,7 +34,6 @@ public aspect BackupCatalogo {
 	after(): escribirCatalogo()  {
 		XSSFWorkbook workbook = new XSSFWorkbook(); 
 		  
-        // Create a blank sheet 
         XSSFSheet sheet = workbook.createSheet("Libros"); 
         
         try {
@@ -42,11 +41,9 @@ public aspect BackupCatalogo {
 	
 	        int rownum = 0; 
 	        for (String[] libro : arrayLibros) { 
-	          // this creates a new row in the sheet 
 	          Row row = sheet.createRow(rownum++); 
 	          int cellnum = 0; 
 	          for (String campo : libro) { 
-	              // this line creates a cell in the next column of that row 
 	              Cell cell = row.createCell(cellnum++); 
 	              
 	              cell.setCellValue(campo); 
@@ -54,7 +51,6 @@ public aspect BackupCatalogo {
 	          } 
 	        } 
 		    
-	        // this Writes the workbook gfgcontribute 
 	        FileOutputStream out = new FileOutputStream(new File("BackupGeneradoCatalogo.xlsx")); 
 	        workbook.write(out); 
 	        out.close(); 

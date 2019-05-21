@@ -560,8 +560,7 @@ public class VentanaLibro extends JFrame {
 			libros = libro.obtenerTodosConEstado();
 			libros.get(0).isPrestado();
 		} catch (Exception e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
+			
 		}
 
 		Object mat[][] = new Object[libros.size()][6];
